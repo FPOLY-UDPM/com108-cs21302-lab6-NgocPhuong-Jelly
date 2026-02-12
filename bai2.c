@@ -8,39 +8,41 @@
 //  Input: Nhập vào từ bàn phím 1 mảng các số nguyên. Mảng gồm n phần tử 
 //  Output: Xuất ra màn hình giá trị nhỏ nhất và lớn nhất của mảng
 
-#include<stdio.h>
-#include<conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main() {
     int n;
-    printf("Nhập số phần tử n: ");
+    printf("Nhập số phần tử của mảng: ");
     scanf("%d", &n);
     
-    int mang[n];
-    printf("Nhập mảng %d phần tử:\n", n);
-    for(int i = 0; i < n; i++) {
-        printf("Phần tử %d: ", i+1);
-        scanf("%d", &mang[i]);
+    int arr[n];
+    srand(time(NULL));
+    printf("Mảng ngẫu nhiên đã được tạo:\n");
+    for (int i = 0; i < n; i++) {
+        arr[i] = rand() % 100;
+        printf("arr[%d] = %d ", i, arr[i]);
     }
-
-    int max = mang[0];
-    int min = mang[0];
-
-    for(int i = 1; i < n; i++) {
-        if(mang[i] > max) {
-            max = mang[i];
+    printf("\n");
+    
+    int min = arr[0];
+    int max = arr[0];
+    
+    for (int i = 1; i < n; i++) {
+        if (arr[i] < min) {
+            min = arr[i];
         }
-        if(mang[i] < min) {
-            min = mang[i];
+        if (arr[i] > max) {
+            max = arr[i];
         }
     }
     
-    printf("\n=== KẾT QUẢ ===");
-    printf("\nGiá trị lớn nhất: %d", max);
-    printf("\nGiá trị nhỏ nhất: %d", min);
+    printf("Giá trị nhỏ nhất: %d\n", min);
+    printf("Giá trị lớn nhất: %d\n", max);
     
-    getch();
     return 0;
 }
+
 
 
